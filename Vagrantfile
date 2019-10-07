@@ -1,13 +1,9 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-VAGRANTFILE_API_VERSION = "2"
+Vagrant.configure(2) do |config|
 
-Vagrant.require_version ">= 1.7.0"
-
-Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-
-   config.vm.box = "debian/jessie64"
+   config.vm.box = "debian/buster64"
 
    config.vm.provider :virtualbox do |v|
       v.name = "jarvis.local"
@@ -19,18 +15,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
    end
 
    config.vm.hostname = "jarvis.local"
-   config.vm.network :private_network, ip: "192.168.50.25"
-
-   if defined?(VagrantPlugins::HostsUpdater)
-
-      # Pass the found host names to the hostsupdater plugin so it can perform magic.
-      config.hostsupdater.aliases = ['jarvis.local']
-      config.hostsupdater.remove_on_suspend = true
-   end
+   config.vm.network :private_network, ip: "192.168.4.25"
 
    config.vm.provision :ansible do |ansible|
-      ansible.verbose = "v"
+      ansible.verbose = "vvv"
       ansible.playbook = "main.yml"
-      ansible.compatibility_mode = "2.0"
    end
 end
