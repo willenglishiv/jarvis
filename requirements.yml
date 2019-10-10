@@ -1,0 +1,5 @@
+---
+# Install with: `ansible-galaxy install -r requirements.yml`
+- name: willenglishiv.docker
+  src: https://github.com/willenglishiv/ansible-role-docker.git
+  version: master

@@ -1,0 +1,12 @@
+---
+# tasks file for jarvis
+- name: update apt
+  apt:
+    name:
+      - cockpit
+      - zsh
+      - git
+      - youtube-dl
+    update_cache: yes
+    upgrade: yes
+    state: present
