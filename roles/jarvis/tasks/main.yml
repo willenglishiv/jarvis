@@ -1,12 +1,12 @@
 ---
 # tasks file for jarvis
-- name: update apt
-  apt:
+- name: install packages
+  package:
     name:
       - cockpit
       - zsh
       - git
       - youtube-dl
-    update_cache: yes
-    upgrade: yes
+      - vim
     state: present
+    
